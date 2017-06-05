@@ -69,7 +69,7 @@ namespace SnakeDesktop
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if(passedTime > 1000)
+            if(passedTime > 300)
             {
                 snakeGame.Update();
                 passedTime = 0;
@@ -86,7 +86,7 @@ namespace SnakeDesktop
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(new Color(16,16,16));
+            GraphicsDevice.Clear(Color.Black);
 
             renderer.Render(spriteBatch);
 

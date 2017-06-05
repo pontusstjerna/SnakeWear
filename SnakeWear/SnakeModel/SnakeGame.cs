@@ -6,7 +6,10 @@ namespace SnakeModel
 {
     public class SnakeGame
     {
+
+        public const int SIZE = 20;
         public Snek Snake { get; private set; }
+        public int Score { get { return Snake.Pieces.Count; } }
 
         public SnakeGame()
         {
