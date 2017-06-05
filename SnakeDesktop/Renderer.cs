@@ -17,6 +17,7 @@ namespace SnakeDesktop
         private Texture2D head;
         private Texture2D body;
         private Texture2D background;
+        private Texture2D food;
 
         private int paddingX;
         private int paddingY;
@@ -36,6 +37,9 @@ namespace SnakeDesktop
 
             background = new Texture2D(gd, 1, 1);
             background.SetData<Color>(new Color[] { new Color(16,16,16) });
+
+            food = new Texture2D(gd, 1, 1);
+            food.SetData<Color>(new Color[] { Color.Cyan });
         }
 
         public void Render(SpriteBatch sb)
@@ -47,6 +51,8 @@ namespace SnakeDesktop
             {
                 DrawSnekPiece(piece, sb);
             }
+            sb.Draw(food, new Rectangle((int)(game.FoodX * scale) + paddingX, (int)(game.FoodY * scale) + paddingY, (int)(scale), (int)scale), null, Color.White);
+
             sb.End();
         }
 

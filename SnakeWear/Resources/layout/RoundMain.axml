@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     tools:deviceIds="wear_round">
-	<Button
-			android:id="@+id/myButton"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:text="@string/hello_round" />
+    <Button
+        android:id="@+id/myButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_round" />
 </LinearLayout>
