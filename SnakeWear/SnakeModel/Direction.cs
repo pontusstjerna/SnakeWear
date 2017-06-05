@@ -33,5 +33,16 @@ namespace SnakeModel
                     break;
             }
         }
+
+        private Direction(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public Direction Clone()
+        {
+            return new Direction(X, Y);
+        }
     }
 }

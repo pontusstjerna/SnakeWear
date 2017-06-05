@@ -50,6 +50,16 @@ namespace SnakeDesktop
             sb.End();
         }
 
+        public int GetGameX(int x)
+        {
+            return (int)((x - paddingX) / scale);
+        }
+
+        public int GetGameY(int y)
+        {
+            return (int)((y - paddingY) / scale);
+        }
+
         private void DrawSnekPiece(SnekPiece piece, SpriteBatch sb)
         {
             sb.Draw(body, new Rectangle((int)(piece.X*scale) + paddingX, (int)(piece.Y*scale) + paddingY, (int)(scale), (int)scale), null, Color.White);

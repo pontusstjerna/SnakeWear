@@ -18,6 +18,7 @@ namespace SnakeDesktop
         private Renderer renderer;
 
         private double passedTime = 0;
+        private MouseState lastState;
         
         public Game1()
         {
@@ -33,7 +34,7 @@ namespace SnakeDesktop
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            this.IsMouseVisible = true;
             base.Initialize();
         }
 
@@ -68,6 +69,17 @@ namespace SnakeDesktop
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            var mouseState = Mouse.GetState();
+            if(lastState != null)
+            {
+                if (lastState.LeftButton != ButtonState.Pressed && mouseState.LeftButton == ButtonState.Pressed)
+                {
+                    snakeGame.Goto(renderer.GetGameX(mouseState.X), renderer.GetGameY(mouseState.Y));
+                }
+            }
+            lastState = mouseState;
+            
 
             if(passedTime > 300)
             {

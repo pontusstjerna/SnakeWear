@@ -25,10 +25,10 @@ namespace SnakeModel
 
         public void Update()
         {
-            Pieces[0].NextDirection = Head.Direction;
+            Pieces[0].NextDirection = Head.Direction.Clone();
             for(int i = 1; i < Pieces.Count; i++)
             {
-                Pieces[i].NextDirection = Pieces[i - 1].NextDirection;
+                Pieces[i].NextDirection = Pieces[i - 1].Direction.Clone();
             }
 
             Head.Update();

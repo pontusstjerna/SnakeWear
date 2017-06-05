@@ -21,14 +21,25 @@ namespace SnakeModel
             Snake.Update();
         }
 
-        public void TurnLeft()
+        public void Goto(int x, int y)
         {
+            var headDir = Snake.Head.Direction;
+            var head = Snake.Head;
 
-        }
-
-        public void TurnRight()
-        {
-
+            if(headDir.Y == 0)
+            {
+                if (y > head.Y)
+                    head.NextDirection = new Direction(Directions.DOWN);
+                else
+                    head.NextDirection = new Direction(Directions.UP);
+            }
+            else
+            {
+                if (x > head.X)
+                    head.NextDirection = new Direction(Directions.RIGHT);
+                else
+                    head.NextDirection = new Direction(Directions.LEFT);
+            }
         }
     }
 }

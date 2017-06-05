@@ -15,15 +15,15 @@ namespace SnakeModel
         {
             X = x;
             Y = y;
-            this.Direction = direction;
+            Direction = direction;
         }
 
         public void Update()
         {
             if (X + Direction.X >= SnakeGame.SIZE) X -= SnakeGame.SIZE;
-            else if (X + Direction.X <= 0) X += SnakeGame.SIZE;
-            else if (Y + Direction.Y >= SnakeGame.SIZE) X -= SnakeGame.SIZE;
-            else if (Y + Direction.Y <= 0) Y += SnakeGame.SIZE;
+            else if (X + Direction.X < 0) X += SnakeGame.SIZE;
+            else if (Y + Direction.Y >= SnakeGame.SIZE) Y -= SnakeGame.SIZE;
+            else if (Y + Direction.Y < 0) Y += SnakeGame.SIZE;
 
             X += Direction.X;
             Y += Direction.Y;
