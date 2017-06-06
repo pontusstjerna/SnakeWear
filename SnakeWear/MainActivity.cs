@@ -43,10 +43,10 @@ namespace SnakeWear
 
                 button.Click += delegate
                 {
-
+                    Android.Graphics.Point size = new Android.Graphics.Point();
+                    WindowManager.DefaultDisplay.GetRealSize(size);
+                    SetContentView(new Game(this, size.X, size.Y));
                 };
-
-
             };
         }
 

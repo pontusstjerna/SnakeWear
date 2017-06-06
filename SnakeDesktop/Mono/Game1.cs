@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using SnakeModel;
 using System;
 
-namespace SnakeDesktop
+namespace SnakeDesktop.Mono
 {
     /// <summary>
     /// This is the main type for your game.

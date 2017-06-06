@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeDesktop", "..\SnakeDes
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SnakeModel", "..\SnakeModel\SnakeModel.shproj", "{9F4339F2-61D4-4DE6-99B8-EB954AC9D28A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakePhone", "..\SnakePhone\SnakePhone.csproj", "{0880C7A6-C6BB-424E-AD59-90755D743707}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\SnakeModel\SnakeModel.projitems*{6ef646ec-067a-47ca-b3b1-dd6f3d608a3f}*SharedItemsImports = 4
@@ -30,6 +32,12 @@ Global
 		{DA88A39F-0CCA-44E7-B231-F5E799740D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA88A39F-0CCA-44E7-B231-F5E799740D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA88A39F-0CCA-44E7-B231-F5E799740D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0880C7A6-C6BB-424E-AD59-90755D743707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0880C7A6-C6BB-424E-AD59-90755D743707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0880C7A6-C6BB-424E-AD59-90755D743707}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0880C7A6-C6BB-424E-AD59-90755D743707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0880C7A6-C6BB-424E-AD59-90755D743707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0880C7A6-C6BB-424E-AD59-90755D743707}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
