@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
 	<string name="app_name">SnakeWear</string>
-	<string name="hello_round">I\'m Round. Tap Me!</string>
-	<string name="hello_rect">I\'m Rect. Tap Me!</string>
+	<string name="highscore">
+    <b>Highscore:</b> None yet!</string>
+  <string name="play_game">Play</string>
+  <string name="level_select">Select speed:</string>
 
 </resources>

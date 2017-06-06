@@ -14,10 +14,11 @@ using Android.Views.Animations;
 
 namespace SnakeWear
 {
-    [Activity(Label = "SnakeWear", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Snake", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
+        int speed = 1;
+        TextView txtSpeed;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -29,24 +30,29 @@ namespace SnakeWear
             var v = FindViewById<WatchViewStub>(Resource.Id.watch_view_stub);
             v.LayoutInflated += delegate
             {
+                txtSpeed = FindViewById<TextView>(Resource.Id.level);
 
                 // Get our button from the layout resource,
                 // and attach an event to it
-                Button button = FindViewById<Button>(Resource.Id.myButton);
+                Button button = FindViewById<Button>(Resource.Id.btnPlay);
+                ImageView decrease = FindViewById<ImageView>(Resource.Id.decrease);
+                ImageView increase = FindViewById<ImageView>(Resource.Id.increase);
+
+                decrease.Click += delegate { if (speed > 1) speed--; UpdateSpeed(); };
+                increase.Click += delegate { if (speed < 50) speed++; UpdateSpeed(); };
 
                 button.Click += delegate
                 {
-                    var notification = new NotificationCompat.Builder(this)
-                        .SetContentTitle("Button tapped")
-                        .SetContentText("Button tapped " + count++ + " times!")
-                        .SetSmallIcon(Android.Resource.Drawable.StatNotifyVoicemail)
-                        .SetGroup("group_key_demo").Build();
 
-                    var manager = NotificationManagerCompat.From(this);
-                    manager.Notify(1, notification);
-                    button.Text = "Check Notification!";
                 };
+
+
             };
+        }
+
+        private void UpdateSpeed()
+        {
+            txtSpeed.Text = $"{speed}";
         }
     }
 }
