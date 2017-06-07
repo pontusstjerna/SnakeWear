@@ -18,14 +18,17 @@ namespace SnakeDesktop.Mono
         private Texture2D body;
         private Texture2D background;
         private Texture2D food;
+        private SpriteFont main;
 
         private int paddingX;
         private int paddingY;
 
-        public Renderer(SnakeGame game, GraphicsDevice gd)
+        public Renderer(SnakeGame game, GraphicsDevice gd, SpriteFont main)
         {
             this.game = game;
-            scale = Math.Min(gd.Viewport.Width, gd.Viewport.Height) / (float)SnakeGame.SIZE;
+
+            scale = (Math.Min(gd.Viewport.Width, gd.Viewport.Height) / (float)SnakeGame.SIZE) * (float)Math.Cos(Math.PI/4); //For round watch faces
+
             paddingX = (int)((gd.Viewport.Width - scale * SnakeGame.SIZE) / 2);
             paddingY = (int)((gd.Viewport.Height - scale * SnakeGame.SIZE) / 2);
 
@@ -40,6 +43,8 @@ namespace SnakeDesktop.Mono
 
             food = new Texture2D(gd, 1, 1);
             food.SetData<Color>(new Color[] { Color.Cyan });
+
+            this.main = main;
         }
 
         public void Render(SpriteBatch sb)
@@ -53,6 +58,8 @@ namespace SnakeDesktop.Mono
             }
             sb.Draw(food, new Rectangle((int)(game.FoodX * scale) + paddingX, (int)(game.FoodY * scale) + paddingY, (int)(scale), (int)scale), null, Color.White);
 
+            DrawScore(sb);
+            
             sb.End();
         }
 
@@ -69,6 +76,17 @@ namespace SnakeDesktop.Mono
         private void DrawSnekPiece(SnekPiece piece, SpriteBatch sb)
         {
             sb.Draw(body, new Rectangle((int)(piece.X*scale) + paddingX, (int)(piece.Y*scale) + paddingY, (int)(scale), (int)scale), null, Color.White);
+        }
+
+        private void DrawScore(SpriteBatch sb)
+        {
+            sb.DrawString(main, "Highest: 000", new Vector2(paddingX + (SnakeGame.SIZE * scale / 2) - scale * 2, scale - (float)(Math.Cos(Math.PI/2)*scale/2)), Color.DarkOrange);
+            sb.DrawString(main, "Current: " + GetScoreString(), new Vector2(paddingX + (SnakeGame.SIZE * scale / 2) - scale * 2, paddingY + scale*SnakeGame.SIZE + (scale - (float)(Math.Cos(Math.PI / 2) * scale / 2))), Color.DarkOrange);
+        }
+
+        private string GetScoreString()
+        {
+            return (1000 + game.Score).ToString().Substring(1);
         }
     }
 }

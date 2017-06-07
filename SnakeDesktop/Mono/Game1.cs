@@ -49,7 +49,7 @@ namespace SnakeDesktop.Mono
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             snakeGame = new SnakeGame();
-            renderer = new Renderer(snakeGame, GraphicsDevice);
+            renderer = new Renderer(snakeGame, GraphicsDevice, Content.Load<SpriteFont>("main"));
         }
 
         /// <summary>

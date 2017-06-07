@@ -9,7 +9,7 @@ namespace SnakeModel
 
         public const int SIZE = 20;
         public Snek Snake { get; private set; }
-        public int Score { get { return Snake.Pieces.Count; } }
+        public int Score { get { return Snake.Pieces.Count + 1; } }
 
         public int FoodX { get; private set; }
         public int FoodY { get; private set; }
