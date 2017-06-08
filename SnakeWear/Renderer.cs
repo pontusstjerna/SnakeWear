@@ -23,51 +23,74 @@ namespace SnakeWear
         private Paint body;
         private Paint background;
         private Paint food;
+        private Paint info;
+        private Paint gameOver;
 
-        private int paddingX;
-        private int paddingY;
+        private float paddingX;
+        private float paddingY;
+        private int width;
+        private int height;
 
         public Renderer(SnakeGame game, int width, int height)
         {
             this.game = game;
+            this.width = width;
+            this.height = height;
 
-            scale = Math.Min(width, height) / (float)SnakeGame.SIZE;
-            scale *= (float)Math.Cos(Math.PI / 4);
+            scale = (Math.Min(width, height) / (float)SnakeGame.SIZE) * ((float)Math.Cos(Math.PI / 4));
 
-            paddingX = (int)((width - scale * SnakeGame.SIZE) / 2);
-            paddingY = (int)((height - scale * SnakeGame.SIZE) / 2);
+            paddingX = (width - scale * SnakeGame.SIZE) / 2;
+            paddingY = (height - scale * SnakeGame.SIZE) / 2;
 
             head = new Paint();
-            head.SetARGB(255, 255, 165, 0); //Darkorange
+            head.Color = Color.DarkOrange;
             head.SetStyle(Paint.Style.FillAndStroke);
 
             body = new Paint();
-            body.SetARGB(255, 70, 70, 70);
+            body.Color = new Color(70, 70, 70);
             body.SetStyle(Paint.Style.FillAndStroke);
 
             background = new Paint();
-            background.SetARGB(255, 16, 16, 16);
+            background.Color = new Color(16, 16, 16);
             background.SetStyle(Paint.Style.FillAndStroke);
 
             food = new Paint();
-            food.SetARGB(255, 0, 255, 255);
+            food.Color = Color.Cyan;
             food.SetStyle(Paint.Style.FillAndStroke);
+
+            info = new Paint();
+            info.Color = Color.Wheat;
+            info.TextSize = scale*2;
+            info.TextAlign = Paint.Align.Center;
+            info.SetStyle(Paint.Style.Fill);
+
+            gameOver = new Paint();
+            gameOver.Color = Color.DarkOrange;
+            gameOver.SetStyle(Paint.Style.FillAndStroke);
+            gameOver.TextSize = 4 * scale;
+            gameOver.TextAlign = Paint.Align.Center;
         }
 
         public void Render(Canvas canvas)
         {
-            int headX = (int)(game.Snake.Head.X * scale) + paddingX;
-            int headY = (int)(game.Snake.Head.Y * scale) + paddingY;
-            canvas.DrawRect(new Rect((int)(0 * scale) + paddingX, (int)(0 * scale) + paddingY, (int)(SnakeGame.SIZE * scale), (int)(SnakeGame.SIZE * scale)), background);
-            canvas.DrawRect(new Rect(headX, headY, headX + (int)(scale), headY + (int)scale), head); //head
-            foreach (SnekPiece piece in game.Snake.Pieces)
+            if (!game.GameOver)
             {
-                DrawSnekPiece(piece, canvas);
-            }
+                DrawBackground(background, canvas);
+                canvas.DrawRect(game.Snake.Head.X * scale + paddingX, game.Snake.Head.Y * scale + paddingY, game.Snake.Head.X * scale + paddingX + scale, game.Snake.Head.Y * scale + paddingY + scale, head);
+                foreach (SnekPiece piece in game.Snake.Pieces)
+                {
+                    DrawSnekPiece(piece, canvas);
+                }
 
-            int foodX = (int)(game.FoodX * scale) + paddingX;
-            int foodY = (int)(game.FoodY * scale) + paddingY;
-            canvas.DrawRect(new Rect(foodX, foodY, foodX + (int)(scale), foodY + (int)scale), food); //food
+                float foodX = game.FoodX * scale + paddingX;
+                float foodY = game.FoodY * scale + paddingY;
+                canvas.DrawRect(foodX, foodY, foodX + scale, foodY + scale, food); //food
+                DrawScore(canvas);
+            }
+            else
+            {
+                ShowGameOver(canvas);
+            }
         }
 
         public int GetGameX(int x)
@@ -82,15 +105,13 @@ namespace SnakeWear
 
         private void DrawSnekPiece(SnekPiece piece, Canvas canvas)
         {
-            int x = (int)(piece.X * scale) + paddingX;
-            int y = (int)(piece.Y * scale) + paddingY;
-            canvas.DrawRect(new Rect(x, y, x + (int)(scale), y + (int)scale), body); //body
+            canvas.DrawRect(piece.X * scale + paddingX, piece.Y * scale + paddingY, piece.X * scale + paddingX + scale, piece.Y * scale + paddingY + scale, body);
         }
 
         private void DrawScore(Canvas canvas)
         {
-            sb.DrawString(main, "Highest: 000", new Vector2(paddingX + (SnakeGame.SIZE * scale / 2) - scale * 5, scale - (float)(Math.Cos(Math.PI / 2) * scale / 2)), Color.Wheat);
-            sb.DrawString(main, "Current: " + GetScoreString(), new Vector2(paddingX + (SnakeGame.SIZE * scale / 2) - scale * 5, paddingY + scale * SnakeGame.SIZE + (scale - (float)(Math.Cos(Math.PI / 2) * scale / 2))), Color.Wheat);
+            canvas.DrawText("Highest: 000", width/2, paddingY - scale/2, info);
+            canvas.DrawText("Current: " + GetScoreString(), width/2, paddingY + SnakeGame.SIZE*scale + scale*2, info);
         }
 
         private string GetScoreString()
@@ -98,15 +119,20 @@ namespace SnakeWear
             return (1000 + game.Score).ToString().Substring(1);
         }
 
-        private void DrawBackground(Color color, Canvas canvas)
+        private void DrawBackground(Paint paint, Canvas canvas)
         {
-            sb.Draw(background, new Rectangle((int)(0 * scale) + paddingX, (int)(0 * scale) + paddingY, (int)(SnakeGame.SIZE * scale), (int)(SnakeGame.SIZE * scale)), null, color);
+            canvas.DrawRect(paddingX, paddingY, paddingX + SnakeGame.SIZE * scale, paddingY + SnakeGame.SIZE * scale, paint);
         }
 
-        private void ShowGameOver(SpriteBatch sb)
+        private void ShowGameOver(Canvas canvas)
         {
-            DrawBackground(Color.DarkOrange, sb);
-            sb.DrawString(main, "Game over!", new Vector2(paddingX + (SnakeGame.SIZE * scale / 2) - scale * 5, paddingY + (SnakeGame.SIZE * scale / 2) - 2 * scale), Color.Black);
+            canvas.DrawPaint(background);
+            gameOver.TextSize = 4 * scale;
+            canvas.DrawText("Game over!", width/2, height/2 - scale*2, gameOver);
+            gameOver.TextSize = 3 * scale;
+            canvas.DrawText("Your score: " + GetScoreString(), width / 2, height / 2 + scale * 2, gameOver);
+            gameOver.TextSize = 2 * scale;
+            canvas.DrawText("Tap to continue...", width / 2, height / 2 + scale * 8, gameOver);
         }
     }
 }

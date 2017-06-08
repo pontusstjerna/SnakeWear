@@ -29,6 +29,14 @@ namespace SnakeWear
 
             //This is why I love lambdas. This is all the game steering I need to do.
             Touch += (s, e) => { if (e.Event.Action == MotionEventActions.Up) game.Goto(renderer.GetGameX((int)e.Event.GetX()), renderer.GetGameY((int)e.Event.GetY())); };
+            Touch += (s, e) =>
+            {
+                if (game.GameOver)
+                {
+                    Activity host = (Activity)context;
+                    host.SetContentView(Resource.Layout.Main);
+                }
+            };
  
 
             var t = new System.Timers.Timer();
