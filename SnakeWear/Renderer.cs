@@ -30,7 +30,10 @@ namespace SnakeWear
         public Renderer(SnakeGame game, int width, int height)
         {
             this.game = game;
+
             scale = Math.Min(width, height) / (float)SnakeGame.SIZE;
+            scale *= (float)Math.Cos(Math.PI / 4);
+
             paddingX = (int)((width - scale * SnakeGame.SIZE) / 2);
             paddingY = (int)((height - scale * SnakeGame.SIZE) / 2);
 
@@ -82,6 +85,28 @@ namespace SnakeWear
             int x = (int)(piece.X * scale) + paddingX;
             int y = (int)(piece.Y * scale) + paddingY;
             canvas.DrawRect(new Rect(x, y, x + (int)(scale), y + (int)scale), body); //body
+        }
+
+        private void DrawScore(Canvas canvas)
+        {
+            sb.DrawString(main, "Highest: 000", new Vector2(paddingX + (SnakeGame.SIZE * scale / 2) - scale * 5, scale - (float)(Math.Cos(Math.PI / 2) * scale / 2)), Color.Wheat);
+            sb.DrawString(main, "Current: " + GetScoreString(), new Vector2(paddingX + (SnakeGame.SIZE * scale / 2) - scale * 5, paddingY + scale * SnakeGame.SIZE + (scale - (float)(Math.Cos(Math.PI / 2) * scale / 2))), Color.Wheat);
+        }
+
+        private string GetScoreString()
+        {
+            return (1000 + game.Score).ToString().Substring(1);
+        }
+
+        private void DrawBackground(Color color, Canvas canvas)
+        {
+            sb.Draw(background, new Rectangle((int)(0 * scale) + paddingX, (int)(0 * scale) + paddingY, (int)(SnakeGame.SIZE * scale), (int)(SnakeGame.SIZE * scale)), null, color);
+        }
+
+        private void ShowGameOver(SpriteBatch sb)
+        {
+            DrawBackground(Color.DarkOrange, sb);
+            sb.DrawString(main, "Game over!", new Vector2(paddingX + (SnakeGame.SIZE * scale / 2) - scale * 5, paddingY + (SnakeGame.SIZE * scale / 2) - 2 * scale), Color.Black);
         }
     }
 }

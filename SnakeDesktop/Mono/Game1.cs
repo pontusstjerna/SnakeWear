@@ -77,6 +77,7 @@ namespace SnakeDesktop.Mono
                 if (lastState.LeftButton != ButtonState.Pressed && mouseState.LeftButton == ButtonState.Pressed)
                 {
                     snakeGame.Goto(renderer.GetGameX(mouseState.X), renderer.GetGameY(mouseState.Y));
+                    if (snakeGame.GameOver) Exit();
                 }
             }
             lastState = mouseState;
