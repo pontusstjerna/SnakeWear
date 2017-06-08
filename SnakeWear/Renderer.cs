@@ -75,6 +75,7 @@ namespace SnakeWear
         {
             if (!game.GameOver)
             {
+                canvas.DrawColor(Color.Black);
                 DrawBackground(background, canvas);
                 canvas.DrawRect(game.Snake.Head.X * scale + paddingX, game.Snake.Head.Y * scale + paddingY, game.Snake.Head.X * scale + paddingX + scale, game.Snake.Head.Y * scale + paddingY + scale, head);
                 foreach (SnekPiece piece in game.Snake.Pieces)

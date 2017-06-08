@@ -29,15 +29,13 @@ namespace SnakeWear
 
             //This is why I love lambdas. This is all the game steering I need to do.
             Touch += (s, e) => { if (e.Event.Action == MotionEventActions.Up) game.Goto(renderer.GetGameX((int)e.Event.GetX()), renderer.GetGameY((int)e.Event.GetY())); };
-            Touch += (s, e) =>
+            Touch += (s, e) => { if (game.GameOver) GotoMenu(context); };
+
+            var gdl = new GestureDetector.SimpleOnGestureListener()
             {
-                if (game.GameOver)
-                {
-                    Activity host = (Activity)context;
-                    host.SetContentView(Resource.Layout.Main);
-                }
+                
             };
- 
+    
 
             var t = new System.Timers.Timer();
             t.Interval = 700;
@@ -55,5 +53,22 @@ namespace SnakeWear
             base.OnDraw(canvas);
             renderer.Render(canvas);
         }
+
+        public void GotoMenu(Context context)
+        {
+            Activity host = (Activity)context;
+            host.SetContentView(Resource.Layout.Main);
+        }
+
+        private class LongPressListener : GestureDetector.SimpleOnGestureListener
+        {
+            public override void OnLongPress(MotionEvent e)
+            {
+                base.OnLongPress(e);
+                
+            }
+        }
     }
+
+    
 }
