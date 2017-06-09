@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("SnakePhone.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("SnakeWear.Resource", IsApplication=true)]
 
-namespace SnakePhone
+namespace SnakeWear
 {
 	
 	
@@ -47,9 +47,6 @@ namespace SnakePhone
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
 			
-			// aapt resource value: 0x7f020001
-			public const int Splash = 2130837505;
-			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -60,14 +57,46 @@ namespace SnakePhone
 			}
 		}
 		
+		public partial class Layout
+		{
+			
+			// aapt resource value: 0x7f030000
+			public const int Main = 2130903040;
+			
+			static Layout()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Layout()
+			{
+			}
+		}
+		
+		public partial class Raw
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int wearable_app = 2131034112;
+			
+			static Raw()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Raw()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f030001
-			public const int ApplicationName = 2130903041;
+			// aapt resource value: 0x7f060001
+			public const int ApplicationName = 2131099649;
 			
-			// aapt resource value: 0x7f030000
-			public const int Hello = 2130903040;
+			// aapt resource value: 0x7f060000
+			public const int Hello = 2131099648;
 			
 			static String()
 			{
@@ -79,18 +108,18 @@ namespace SnakePhone
 			}
 		}
 		
-		public partial class Style
+		public partial class Xml
 		{
 			
 			// aapt resource value: 0x7f040000
-			public const int Theme_Splash = 2130968576;
+			public const int wearable_app_desc = 2130968576;
 			
-			static Style()
+			static Xml()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 			}
 			
-			private Style()
+			private Xml()
 			{
 			}
 		}
