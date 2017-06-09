@@ -155,14 +155,17 @@ namespace SnakeWear
 			// aapt resource value: 0x7f050005
 			public const int common_signin_btn_light_text_pressed = 2131034117;
 			
-			// aapt resource value: 0x7f05001b
-			public const int common_signin_btn_text_dark = 2131034139;
-			
 			// aapt resource value: 0x7f05001c
-			public const int common_signin_btn_text_light = 2131034140;
+			public const int common_signin_btn_text_dark = 2131034140;
+			
+			// aapt resource value: 0x7f05001d
+			public const int common_signin_btn_text_light = 2131034141;
 			
 			// aapt resource value: 0x7f05000c
 			public const int dark_blue = 2131034124;
+			
+			// aapt resource value: 0x7f05001b
+			public const int darkorange = 2131034139;
 			
 			// aapt resource value: 0x7f05000d
 			public const int disabled_text_light = 2131034125;

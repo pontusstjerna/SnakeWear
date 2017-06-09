@@ -23,11 +23,11 @@ namespace SnakeWear
         private System.Timers.Timer longPressTimer;
         private bool exit = false;
 
-        public Game(Context context, int width, int height, int speed) : base(context)
+        public Game(Context context, int width, int height, int speed, int highscore) : base(context)
         {
             game = new SnakeGame();
 
-            renderer = new Renderer(game, width, height);
+            renderer = new Renderer(game, width, height, highscore);
 
             //This is why I love lambdas. This is all the game steering I need to do.
             Touch += (s, e) => { if (e.Event.Action == MotionEventActions.Up) game.Goto(renderer.GetGameX((int)e.Event.GetX()), renderer.GetGameY((int)e.Event.GetY())); };
@@ -54,7 +54,7 @@ namespace SnakeWear
         private void GotoMenu(Context context)
         {
             MainActivity host = (MainActivity)context;
-            host.ShowMainMenu();
+            host.ShowMainMenu(game.Score);
         }
 
         private void ConfigureLongPress(Context context)
@@ -70,7 +70,7 @@ namespace SnakeWear
             };
 
             longPressTimer = new System.Timers.Timer();
-            longPressTimer.Interval = 3000;
+            longPressTimer.Interval = 2000;
             longPressTimer.Elapsed += (s, e) => exit = true;
         }
     }   

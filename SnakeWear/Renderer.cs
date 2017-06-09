@@ -31,12 +31,14 @@ namespace SnakeWear
         private float paddingY;
         private int width;
         private int height;
+        private int highscore;
 
-        public Renderer(SnakeGame game, int width, int height)
+        public Renderer(SnakeGame game, int width, int height, int highscore)
         {
             this.game = game;
             this.width = width;
             this.height = height;
+            this.highscore = highscore;
 
             scale = (Math.Min(width, height) / (float)SnakeGame.SIZE) * ((float)Math.Cos(Math.PI / 4));
 
@@ -117,13 +119,18 @@ namespace SnakeWear
 
         private void DrawScore(Canvas canvas)
         {
-            canvas.DrawText("Highest: 000", width/2, paddingY - scale/2, info);
+            canvas.DrawText("Highest: " + GetHighscoreString(), width/2, paddingY - scale/2, info);
             canvas.DrawText("Current: " + GetScoreString(), width/2, paddingY + SnakeGame.SIZE*scale + scale*2, info);
         }
 
         private string GetScoreString()
         {
             return (1000 + game.Score).ToString().Substring(1);
+        }
+
+        private string GetHighscoreString()
+        {
+            return (1000 + Math.Max(highscore, game.Score)).ToString().Substring(1);
         }
 
         private void DrawBackground(Paint paint, Canvas canvas)
@@ -133,9 +140,12 @@ namespace SnakeWear
 
         private void ShowGameOver(Canvas canvas)
         {
+            string gameover = "Game over!";
+            if (game.Score > highscore) gameover = "New highscore!";
+
             canvas.DrawPaint(background);
             gameOver.TextSize = 4 * scale;
-            canvas.DrawText("Game over!", width/2, height/2 - scale*2, gameOver);
+            canvas.DrawText(gameover, width/2, height/2 - scale*2, gameOver);
             gameOver.TextSize = 3 * scale;
             canvas.DrawText("Your score: " + GetScoreString(), width / 2, height / 2 + scale * 2, gameOver);
             gameOver.TextSize = 2 * scale;
