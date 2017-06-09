@@ -24,6 +24,11 @@ namespace SnakeWear
         {
             base.OnCreate(bundle);
 
+            ShowMainMenu();
+        }
+
+        public void ShowMainMenu()
+        {
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
@@ -45,7 +50,9 @@ namespace SnakeWear
                 {
                     Android.Graphics.Point size = new Android.Graphics.Point();
                     WindowManager.DefaultDisplay.GetRealSize(size);
-                    SetContentView(new Game(this, size.X, size.Y));
+                    var game = new Game(this, size.X, size.Y, speed);
+                    SetContentView(game);
+                    Toast.MakeText(this, "Hold for 3 seconds to go back", ToastLength.Long).Show();
                 };
             };
         }

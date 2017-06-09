@@ -22,6 +22,7 @@ namespace SnakeWear
         private Paint head;
         private Paint body;
         private Paint background;
+        private Paint backgroundStroke;
         private Paint food;
         private Paint info;
         private Paint gameOver;
@@ -52,7 +53,11 @@ namespace SnakeWear
 
             background = new Paint();
             background.Color = new Color(16, 16, 16);
-            background.SetStyle(Paint.Style.FillAndStroke);
+            background.SetStyle(Paint.Style.Fill);
+
+            backgroundStroke = new Paint();
+            backgroundStroke.Color = Color.DarkOrange;
+            backgroundStroke.SetStyle(Paint.Style.Stroke);
 
             food = new Paint();
             food.Color = Color.Cyan;
@@ -77,6 +82,7 @@ namespace SnakeWear
             {
                 canvas.DrawColor(Color.Black);
                 DrawBackground(background, canvas);
+                DrawBackground(backgroundStroke, canvas);
                 canvas.DrawRect(game.Snake.Head.X * scale + paddingX, game.Snake.Head.Y * scale + paddingY, game.Snake.Head.X * scale + paddingX + scale, game.Snake.Head.Y * scale + paddingY + scale, head);
                 foreach (SnekPiece piece in game.Snake.Pieces)
                 {
