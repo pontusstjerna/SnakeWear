@@ -21,7 +21,7 @@ namespace SnakeModel
         public SnakeGame()
         {
             random = new Random();
-            Snake = new Snek(random.Next(SIZE - 4) + 4, random.Next(SIZE - 4) + 4, 3, Directions.UP);
+            Snake = new Snek(random.Next(SIZE - 8) + 8, random.Next(SIZE - 8) + 8, 3, Directions.UP);
             SpawnFood();
         }
 
@@ -29,8 +29,9 @@ namespace SnakeModel
         {
             if (GameOver) return;
             Snake.Update();
-            CheckForFood();
             CheckBodyCollisions();
+            if (GameOver) return;
+            CheckForFood();
         }
 
         public void Goto(int x, int y)
@@ -75,13 +76,14 @@ namespace SnakeModel
             bool valid = true;
             do
             {
+                valid = true;
                 FoodX = random.Next(SIZE - 1);
                 FoodY = random.Next(SIZE - 1);
 
                 if (Snake.Head.X == FoodX && Snake.Head.Y == FoodY) valid = false;
 
                 foreach (var piece in Snake.Pieces)
-                    if (piece.X == FoodX && Snake.Head.Y == FoodY) valid = false;
+                    if (piece.X == FoodX && piece.Y == FoodY) valid = false;
 
             } while (!valid);
         }

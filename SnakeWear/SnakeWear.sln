@@ -13,6 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakePhone", "..\SnakePhone
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\SnakeModel\SnakeModel.projitems*{3501214c-719f-44da-a5b3-987d9fcac08e}*SharedItemsImports = 4
 		..\SnakeModel\SnakeModel.projitems*{6ef646ec-067a-47ca-b3b1-dd6f3d608a3f}*SharedItemsImports = 4
 		..\SnakeModel\SnakeModel.projitems*{9f4339f2-61d4-4de6-99b8-eb954ac9d28a}*SharedItemsImports = 13
 		..\SnakeModel\SnakeModel.projitems*{da88a39f-0cca-44e7-b231-f5e799740d84}*SharedItemsImports = 4

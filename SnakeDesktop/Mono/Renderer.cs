@@ -36,7 +36,7 @@ namespace SnakeDesktop.Mono
             head.SetData<Color>(new Color[] { Color.DarkOrange });
 
             body = new Texture2D(gd, 1, 1);
-            body.SetData<Color>(new Color[] { new Color(70,70,70) });
+            body.SetData<Color>(new Color[] { new Color(100,100,100) });
 
             background = new Texture2D(gd, 1, 1);
             background.SetData<Color>(new Color[] { Color.White });

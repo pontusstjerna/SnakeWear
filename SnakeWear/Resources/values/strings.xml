@@ -4,6 +4,6 @@
 	<string name="highscore">
     <b>Highscore:</b> None yet!</string>
   <string name="play_game">Play</string>
-  <string name="level_select">Select speed:</string>
+  <string name="level_select">Speed: </string>
 
 </resources>

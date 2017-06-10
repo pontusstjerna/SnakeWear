@@ -41,11 +41,39 @@ namespace SnakeWear
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f060001
+			public const int black = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int darkorange = 2131099648;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int decrease = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Icon = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int increase = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int snake = 2130837507;
 			
 			static Drawable()
 			{
@@ -53,6 +81,40 @@ namespace SnakeWear
 			}
 			
 			private Drawable()
+			{
+			}
+		}
+		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f080000
+			public const int btnPlay = 2131230720;
+			
+			// aapt resource value: 0x7f080005
+			public const int decrease = 2131230725;
+			
+			// aapt resource value: 0x7f080002
+			public const int highscore = 2131230722;
+			
+			// aapt resource value: 0x7f080006
+			public const int increase = 2131230726;
+			
+			// aapt resource value: 0x7f080004
+			public const int level = 2131230724;
+			
+			// aapt resource value: 0x7f080003
+			public const int level_select = 2131230723;
+			
+			// aapt resource value: 0x7f080001
+			public const int snake_logo = 2131230721;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
 			{
 			}
 		}
@@ -92,11 +154,17 @@ namespace SnakeWear
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int ApplicationName = 2131099649;
+			// aapt resource value: 0x7f070000
+			public const int app_name = 2131165184;
 			
-			// aapt resource value: 0x7f060000
-			public const int Hello = 2131099648;
+			// aapt resource value: 0x7f070001
+			public const int highscore = 2131165185;
+			
+			// aapt resource value: 0x7f070003
+			public const int level_select = 2131165187;
+			
+			// aapt resource value: 0x7f070002
+			public const int play_game = 2131165186;
 			
 			static String()
 			{

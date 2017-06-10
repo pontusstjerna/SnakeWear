@@ -83,7 +83,7 @@ namespace SnakeDesktop.Mono
             lastState = mouseState;
             
 
-            if(passedTime > 300)
+            if(passedTime > 150)
             {
                 snakeGame.Update();
                 passedTime = 0;

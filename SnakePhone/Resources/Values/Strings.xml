@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">SnakePhone</string>
+	<string name="app_name">SnakeWear</string>
+	<string name="highscore">
+    <b>Highscore:</b> None yet!</string>
+  <string name="play_game">Play</string>
+  <string name="level_select">Speed: </string>
+
 </resources>

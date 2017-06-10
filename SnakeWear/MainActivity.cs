@@ -69,7 +69,9 @@ namespace SnakeWear
             TextView txtHighscore = FindViewById<TextView>(Resource.Id.highscore);
             highscore = Math.Max(prefs.GetInt("highscore", 0), score);
             txtHighscore.Text = $"Highscore: {highscore}";
-            prefs.Edit().PutInt("highscore", highscore);
+            var edit = prefs.Edit();
+            edit.PutInt("highscore", highscore);
+            edit.Commit();
         }
     }
 }
