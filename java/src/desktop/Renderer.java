@@ -19,6 +19,7 @@ public class Renderer {
     private Color head;
     private Color body;
     private Color background;
+    private Color text;
     private Color food;
     private Font main;
 
@@ -40,20 +41,18 @@ public class Renderer {
         body = new Color(100, 100, 100);
         background = Color.white;
         food = Color.cyan;
+        text = new Color(245, 222, 179);
 
         main = new Font("ArialBlack", Font.BOLD, 20);
     }
 
     public void render(Graphics2D g) {
+        g.setColor(Color.black);
+        g.fillRect(0,0,WIDTH, HEIGHT);
         if (!game.isGameOver()) {
             drawBackground(new Color(16, 16, 16), g);
-            g.setColor(head);
-            g.fillRect(
-                    (int) (game.getSnake().getHead().getX() * scale) + paddingX,
-                    (int) (game.getSnake().getHead().getY() * scale) + paddingY,
-                    (int) (scale), (int) scale
-            );
 
+            drawHead(g);
             for (SnekPiece piece : game.getSnake().getBody()) {
                 drawSnekPiece(piece, g);
             }
@@ -81,7 +80,8 @@ public class Renderer {
 
     public void start(MouseListener listener) {
         frame = new JFrame("Snake for Wear (but now on desktop)");
-        frame.setSize(WIDTH, HEIGHT);
+        frame.getContentPane().setPreferredSize(new Dimension(500, 500));
+        frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,27 +104,37 @@ public class Renderer {
         surface.repaint();
     }
 
+    private void drawHead(Graphics2D g) {
+        g.setColor(head);
+        g.fillRect(
+                (int) Math.round(game.getSnake().getHead().getX() * scale) + paddingX,
+                (int) Math.round(game.getSnake().getHead().getY() * scale) + paddingY,
+                (int) Math.round(scale), (int) Math.round(scale)
+        );
+    }
+
     private void drawSnekPiece(SnekPiece piece, Graphics2D g) {
         g.setColor(body);
         g.fillRect(
-                (int) (piece.getX() * scale) + paddingX,
-                (int) (piece.getY() * scale) + paddingY,
-                (int) (scale), (int) scale
+                (int) Math.round(piece.getX() * scale) + paddingX,
+                (int) Math.round(piece.getY() * scale) + paddingY,
+                (int)Math.round(scale), (int)Math.round(scale)
         );
     }
 
     private void drawScore(Graphics2D g) {
         g.setFont(main);
+        g.setColor(text);
         String highest = "Highest: 000";
         g.drawString(highest,
                 WIDTH / 2 - g.getFontMetrics().stringWidth(highest) / 2,
-                (int) (scale - (Math.cos(Math.PI / 2) * scale / 2))
+                (int) paddingY - g.getFontMetrics().getHeight() // (scale - (Math.cos(Math.PI / 2) * scale / 2))
         );
 
         String current = "Current: " + getScoreString();
         g.drawString(current,
                 WIDTH / 2 - g.getFontMetrics().stringWidth(current) / 2,
-                (int) (paddingY + scale * SnakeGame.SIZE + (scale - (Math.cos(Math.PI / 2) * scale / 2)))
+                (int) (paddingY + scale * SnakeGame.SIZE + (scale - (Math.cos(Math.PI / 2) * scale / 2)) + g.getFontMetrics().getHeight())
         );
     }
 
@@ -134,12 +144,13 @@ public class Renderer {
 
     private void drawBackground(Color color, Graphics2D g) {
         g.setColor(color);
-        g.fillRect(
-                (int) (0 * scale) + paddingX,
-                (int) (0 * scale) + paddingY,
-                (int) (SnakeGame.SIZE * scale),
-                (int) (SnakeGame.SIZE * scale)
-        );
+        int x = (int) (0 * scale) + paddingX;
+        int y = (int) (0 * scale) + paddingY;
+        int w = (int) (SnakeGame.SIZE * scale);
+        int h = (int) (SnakeGame.SIZE * scale);
+        g.fillRect(x,y,w,h);
+        g.setColor(head);
+        g.drawRect(x,y,w,h);
     }
 
     private void showGameOver(Graphics2D g) {

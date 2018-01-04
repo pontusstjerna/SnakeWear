@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 public class InputController implements MouseListener {
     private SnakeGame game;
 
+
     public InputController(SnakeGame game) {
         this.game = game;
     }
