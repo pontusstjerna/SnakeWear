@@ -17,7 +17,7 @@ public class Snake {
     private void run() {
         game = new SnakeGame();
         renderer = new Renderer(game);
-        inputController = new InputController(game);
+        inputController = new InputController(game, renderer);
         renderer.start(inputController);
 
         timer = new Timer(200, (x) -> update());

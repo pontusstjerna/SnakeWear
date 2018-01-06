@@ -7,16 +7,18 @@ import java.awt.event.MouseListener;
 
 public class InputController implements MouseListener {
     private SnakeGame game;
+    private Renderer renderer;
 
 
-    public InputController(SnakeGame game) {
+    public InputController(SnakeGame game, Renderer renderer) {
         this.game = game;
+        this.renderer = renderer;
     }
 
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        game.changeDirection(e.getX(), e.getY());
+        game.changeDirection(renderer.getGameX(e.getX()), renderer.getGameY(e.getY()));
     }
 
     @Override
