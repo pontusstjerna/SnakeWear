@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
-        applicationId "se.pontek.snakewear"
-        minSdkVersion 23
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        applicationId "pontus.wearsnake"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 02
+        versionName "2.0"
     }
     buildTypes {
         release {
@@ -17,13 +17,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     wearApp project(':wear')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.google.android.gms:play-services:10.2.6'
-    compile 'com.android.support:support-v4:26.0.0-alpha1'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:mediarouter-v7:27.0.2'
+    implementation 'com.google.android.gms:play-services:11.8.0'
+    implementation 'com.android.support:support-v4:27.0.2'
 }
