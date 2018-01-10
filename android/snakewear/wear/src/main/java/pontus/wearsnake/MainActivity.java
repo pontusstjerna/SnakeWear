@@ -1,11 +1,10 @@
-package se.pontek.snakewear;
+package pontus.wearsnake;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +16,12 @@ public class MainActivity extends WearableActivity {
     private int speed;
     private int highscore;
 
+    TextView txtSpeed;
+    TextView txtHighscore;
+    Button btnPlay;
+    ImageView imgIncrease;
+    ImageView imgDecrease;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,32 +29,27 @@ public class MainActivity extends WearableActivity {
         speed = getPreferences(MODE_PRIVATE).getInt("speed",
                 Integer.parseInt(getString(R.string.init_level)));
 
-        showMainMenu(0);
-    }
-
-    public void showMainMenu(int score)
-    {
-        // Set our view from the "activity_main" layout R
         setContentView(R.layout.activity_main);
 
-        TextView txtSpeed = findViewById(R.id.level);
+        initComponents();
+
+        showMainMenu();
+    }
+
+    public void showMainMenu()
+    {
         txtSpeed.setText(String.valueOf(speed));
+        updateHighscore();
 
-        updateHighscore(score);
-
-        Button button = findViewById(R.id.btnPlay);
-        ImageView decrease = findViewById(R.id.decrease);
-        ImageView increase = findViewById(R.id.increase);
-
-        decrease.setOnClickListener(x -> {
+        imgDecrease.setOnClickListener(x -> {
             if (speed > 1) speed--; updateSpeed(txtSpeed);
         });
 
-        increase.setOnClickListener(x -> {
+        imgIncrease.setOnClickListener(x -> {
             if (speed < 50) speed++; updateSpeed(txtSpeed);
         });
 
-        button.setOnClickListener(x ->
+        btnPlay.setOnClickListener(x ->
         {
             DisplayMetrics metrics = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -69,33 +69,11 @@ public class MainActivity extends WearableActivity {
         });
     }
 
-//    @Override
-//    public void onEnterAmbient(Bundle ambientDetails) {
-//        super.onEnterAmbient(ambientDetails);
-//        //showMainMenu(0);
-//    }
-//
-//    @Override
-//    public void onUpdateAmbient() {
-//        super.onUpdateAmbient();
-//        //showMainMenu(0);
-//    }
-//
-//    @Override
-//    public void onExitAmbient() {
-//        super.onExitAmbient();
-//        //showMainMenu(0);
-//    }
-
     @SuppressLint("SetTextI18n")
-    private void updateHighscore(int score) {
+    private void updateHighscore() {
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
-        TextView txtHighscore = findViewById(R.id.highscore);
-        highscore = Math.max(prefs.getInt("highscore", 0), score);
+        highscore = prefs.getInt("highscore", MODE_PRIVATE);
         txtHighscore.setText("High score: " + highscore);
-        SharedPreferences.Editor edit = prefs.edit();
-        edit.putInt("highscore", highscore);
-        edit.apply();
     }
 
     private void updateSpeed(TextView txtSpeed) {
@@ -104,5 +82,13 @@ public class MainActivity extends WearableActivity {
         edit.putInt("speed", speed);
         edit.apply();
         txtSpeed.setText(String.valueOf(speed));
+    }
+
+    private void initComponents() {
+        txtHighscore = findViewById(R.id.highscore);
+        txtSpeed = findViewById(R.id.level);
+        btnPlay = findViewById(R.id.btnPlay);
+        imgDecrease = findViewById(R.id.decrease);
+        imgIncrease = findViewById(R.id.increase);
     }
 }

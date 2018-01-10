@@ -1,4 +1,4 @@
-package se.pontek.snakewear.model;
+package pontus.wearsnake.model;
 
 import java.util.ArrayList;
 import java.util.List;

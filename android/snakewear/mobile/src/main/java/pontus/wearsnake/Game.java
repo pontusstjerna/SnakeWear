@@ -1,38 +1,48 @@
 package pontus.wearsnake;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.InterstitialAd;
+
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import pontus.wearsnake.model.SnakeGame;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by Pontus on 2018-01-05.
  */
 
 public class Game extends View {
-    private final int MIN_SWIPE_DIST = 100;
-
     private SnakeGame game;
     private Renderer renderer;
-    private boolean exit = false;
-    private float lastX;
-
+    private Timer timer;
+    private InterstitialAd bigAd;
+    private Random random;
     public Game(Context context) {
         super(context);
     }
 
-    public Game(Context context, int width, int height, int speed, int highscore) {
+    public Game(Context context, int width, int height, int speed, int highscore, InterstitialAd bigAd) {
         this(context);
 
+        this.bigAd = bigAd;
         game = new SnakeGame();
         renderer = new Renderer(game, width, height, highscore);
+
+        random = new Random();
 
         setFocusableInTouchMode(true);
         requestFocus();
@@ -55,14 +65,13 @@ public class Game extends View {
                         renderer.getGameX((int) e.getX()),
                         renderer.getGameY((int) e.getY())
                 );
-            } else if (e.getAction() == MotionEvent.ACTION_DOWN) {
-                lastX = e.getX();
             }
+
             s.performClick();
             return true;
         });
 
-        Timer timer = new Timer();
+        timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -84,7 +93,28 @@ public class Game extends View {
     }
 
     private void gotoMenu(Context context) {
-        MainActivity host = (MainActivity) context;
-        host.showMainMenu(game.getScore());
+        timer.cancel();
+
+        // Save highscore
+        SharedPreferences prefs = context.getSharedPreferences(MainActivity.class.getSimpleName(), MODE_PRIVATE);
+        int highscore = Math.max(prefs.getInt("highscore", 0), game.getScore());
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putInt("highscore", highscore);
+        edit.apply();
+
+        Intent goBack = new Intent(context, MainActivity.class);
+        goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        if (random.nextBoolean()) {
+            bigAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    context.startActivity(goBack);
+                }
+            });
+            bigAd.show();
+        } else {
+            context.startActivity(goBack);
+        }
     }
 }

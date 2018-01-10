@@ -8,8 +8,8 @@ android {
         applicationId "pontus.wearsnake"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 02
-        versionName "2.0"
+        versionCode 14
+        versionName "2.1"
     }
     buildTypes {
         release {

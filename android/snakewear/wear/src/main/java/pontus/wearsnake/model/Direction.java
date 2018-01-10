@@ -1,4 +1,4 @@
-package se.pontek.snakewear.model;
+package pontus.wearsnake.model;
 
 public class Direction {
     public enum Directions {LEFT, UP, RIGHT, DOWN}

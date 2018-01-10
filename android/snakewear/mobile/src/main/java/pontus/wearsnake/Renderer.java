@@ -18,8 +18,6 @@ public class Renderer {
     private final int CYAN = Color.parseColor("#00ffff");
     private final int WHEAT = Color.parseColor("#f5deb3");
 
-    private final String TAG = "Renderer";
-
     private SnakeGame game;
 
     private float scale;

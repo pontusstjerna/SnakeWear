@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="se.pontek.snakewear">
+    package="pontus.wearsnake">
 
     <uses-feature android:name="android.hardware.type.watch" />
 
@@ -22,23 +22,12 @@
             android:required="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="pontus.wearsnake.MainActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.DeviceDefault.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <!--<action android:name="android.intent.action.VIEW" />-->
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
-                <data android:scheme="http"
-                    android:host="www.pontek.se"
-                    android:pathPrefix="/snakewear" />
-                <!-- note that the leading "/" is required for pathPrefix-->
-                <!-- Accepts URIs that begin with "example://gizmos”
-                <data android:scheme="example"
-                      android:host="gizmos" />
-                -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

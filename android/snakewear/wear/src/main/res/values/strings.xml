@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Snake</string>
-	<string name="highscore"><b>Highscore:</b> None yet!</string>
-    <string name="play_game">Play</string>
-    <string name="level_select">Speed: </string>
-    <string name="init_level">5</string>
+<string name="app_name">Snake</string>
+<string name="highscore"><b>Highscore:</b> None yet!</string>
+<string name="play_game">Play</string>
+<string name="level_select">Speed: </string>
+<string name="init_level">5</string>
 </resources>

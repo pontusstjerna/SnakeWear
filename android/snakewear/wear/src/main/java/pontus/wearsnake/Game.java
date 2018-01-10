@@ -1,15 +1,18 @@
-package se.pontek.snakewear;
+package pontus.wearsnake;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import se.pontek.snakewear.model.SnakeGame;
+import pontus.wearsnake.model.SnakeGame;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by Pontus on 2018-01-05.
@@ -20,7 +23,6 @@ public class Game extends View {
 
     private SnakeGame game;
     private Renderer renderer;
-    private boolean exit = false;
     private float lastX;
 
     public Game(Context context) {
@@ -77,7 +79,15 @@ public class Game extends View {
     }
 
     private void gotoMenu(Context context) {
-        MainActivity host = (MainActivity) context;
-        host.showMainMenu(game.getScore());
+        // Save highscore
+        SharedPreferences prefs = context.getSharedPreferences(MainActivity.class.getSimpleName(), MODE_PRIVATE);
+        int highscore = Math.max(prefs.getInt("highscore", 0), game.getScore());
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putInt("highscore", highscore);
+        edit.apply();
+
+        Intent goBack = new Intent(context, MainActivity.class);
+        goBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(goBack);
     }
 }

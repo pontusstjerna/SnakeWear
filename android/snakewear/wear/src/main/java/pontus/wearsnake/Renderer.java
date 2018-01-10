@@ -1,12 +1,11 @@
-package se.pontek.snakewear;
+package pontus.wearsnake;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
 
-import se.pontek.snakewear.model.SnakeGame;
-import se.pontek.snakewear.model.SnekPiece;
+import pontus.wearsnake.model.SnakeGame;
+import pontus.wearsnake.model.SnekPiece;
 
 /**
  * Created by Pontus on 2018-01-05.
@@ -132,7 +131,7 @@ public class Renderer {
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setStyle(Paint.Style.FILL);
         canvas.drawText("Highest: " + getHighscoreString(), width / 2, paddingY - scale / 2, paint);
-        canvas.drawText("Current: " + getHighscoreString(), width / 2, paddingY + SnakeGame.SIZE * scale + scale * 2, paint);
+        canvas.drawText("Current: " + getScoreString(), width / 2, paddingY + SnakeGame.SIZE * scale + scale * 2, paint);
     }
 
     private String getScoreString() {

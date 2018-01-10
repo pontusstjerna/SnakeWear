@@ -6,11 +6,11 @@ android {
     buildToolsVersion "26.0.2"
 
     defaultConfig {
-        applicationId "se.pontek.snakewear"
+        applicationId "pontus.wearsnake"
         minSdkVersion 23
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "2.1"
         multiDexEnabled true
     }
     buildTypes {
