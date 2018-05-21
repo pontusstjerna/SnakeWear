@@ -78,8 +78,12 @@ public class SnakeGame {
     }
 
     private void checkBodyCollisions() {
-        gameOver = snake.getBody().stream().anyMatch(b ->
-                b.getX() == snake.getHead().getX() && b.getY() == snake.getHead().getY());
+        for (SnekPiece bodyPart : snake.getBody()) {
+            if (bodyPart.getX() == snake.getHead().getX() && bodyPart.getY() == snake.getHead().getY()) {
+                gameOver = true;
+                return;
+            }
+        }
     }
 
     private void spawnFood() {
