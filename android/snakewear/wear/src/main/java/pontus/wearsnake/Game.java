@@ -87,7 +87,7 @@ public class Game extends View {
         edit.apply();
 
         Intent goBack = new Intent(context, MainActivity.class);
-        goBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        goBack.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(goBack);
     }
 }
