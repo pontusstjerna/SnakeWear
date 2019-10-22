@@ -16,7 +16,7 @@ public class Renderer {
     private final int GRAY = Color.parseColor("#646464");
     private final int DARK_GRAY = Color.parseColor("#101010");
     private final int CYAN = Color.parseColor("#00ffff");
-    private final int WHEAT = Color.parseColor("#f5deb3");
+    private final int WHITE = Color.parseColor("#ffffff");
 
     private final String TAG = "Renderer";
 
@@ -121,12 +121,12 @@ public class Renderer {
         paint.setTextSize(2 * scale);
         canvas.drawText("Your score: " + getScoreString(), width / 2, height / 2 + scale * 2, paint);
         paint.setTextSize(scale);
-        paint.setColor(WHEAT);
+        paint.setColor(WHITE);
         canvas.drawText("Tap to continue...", width / 2, height / 2 + scale * 8, paint);
     }
 
     private void drawScore(Canvas canvas) {
-        paint.setColor(WHEAT);
+        paint.setColor(WHITE);
         paint.setTextSize(scale * 2);
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setStyle(Paint.Style.FILL);

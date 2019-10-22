@@ -1,5 +1,6 @@
 package pontus.wearsnake;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,33 +30,14 @@ public class Game extends View {
         super(context);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public Game(Context context, int width, int height, int speed, int highscore) {
         this(context);
 
         game = new SnakeGame();
         renderer = new Renderer(game, width, height, highscore);
 
-        setOnTouchListener((s, e) -> {
-            if (game.isGameOver()) {
-                gotoMenu(context);
-                return true;
-            }
-
-            if (e.getAction() == MotionEvent.ACTION_UP) {
-                if (lastX - e.getX() > MIN_SWIPE_DIST) {
-                    gotoMenu(context);
-                } else {
-                    game.changeDirection(
-                            renderer.getGameX((int) e.getX()),
-                            renderer.getGameY((int) e.getY())
-                    );
-                }
-            } else if (e.getAction() == MotionEvent.ACTION_DOWN) {
-                lastX = e.getX();
-            }
-            s.performClick();
-            return true;
-        });
+        setOnTouchListener((view, motionEvent) -> onTap(view, motionEvent, context));
 
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
@@ -76,6 +58,28 @@ public class Game extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         renderer.render(canvas);
+    }
+
+    private boolean onTap(View view, MotionEvent motionEvent, Context context) {
+        if (game.isGameOver()) {
+            gotoMenu(context);
+            return true;
+        }
+
+        if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+            if (lastX - motionEvent.getX() > MIN_SWIPE_DIST) {
+                gotoMenu(context);
+            } else {
+                game.changeDirection(
+                        renderer.getGameX((int) motionEvent.getX()),
+                        renderer.getGameY((int) motionEvent.getY())
+                );
+            }
+        } else if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+            lastX = motionEvent.getX();
+        }
+        view.performClick();
+        return true;
     }
 
     private void gotoMenu(Context context) {
