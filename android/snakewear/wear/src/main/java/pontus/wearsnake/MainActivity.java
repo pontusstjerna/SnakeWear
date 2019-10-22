@@ -42,11 +42,17 @@ public class MainActivity extends WearableActivity {
         updateHighscore();
 
         imgDecrease.setOnClickListener(x -> {
-            if (speed > 1) speed--; updateSpeed(txtSpeed);
+            if (speed > 1) {
+                speed--;
+                updateSpeed(txtSpeed);
+            }
         });
 
         imgIncrease.setOnClickListener(x -> {
-            if (speed < 50) speed++; updateSpeed(txtSpeed);
+            if (speed < 50) {
+                speed++;
+                updateSpeed(txtSpeed);
+            }
         });
 
         btnPlay.setOnClickListener(x ->
