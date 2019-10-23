@@ -1,4 +1,4 @@
-package pontus.wearsnake.model;
+package se.nocroft.wearsnakecommon.model;
 
 import java.util.Random;
 

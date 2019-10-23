@@ -11,7 +11,7 @@ import android.view.View;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import pontus.wearsnake.model.SnakeGame;
+import se.nocroft.wearsnakecommon.model.SnakeGame;
 
 import static android.content.Context.MODE_PRIVATE;
 

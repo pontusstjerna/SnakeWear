@@ -2,7 +2,8 @@
 <resources>
 <string name="app_name">Snake</string>
 <string name="highscore">Highscore: </string>
-<string name="play_game">Play</string>
+<string name="play_game">PLAY</string>
 <string name="level_select">Speed: </string>
 <string name="init_level">5</string>
+<string name="wear_text">Play it on Android Wear!</string>
 </resources>

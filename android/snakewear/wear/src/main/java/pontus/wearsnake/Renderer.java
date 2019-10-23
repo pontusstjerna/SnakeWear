@@ -4,8 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import pontus.wearsnake.model.SnakeGame;
-import pontus.wearsnake.model.SnekPiece;
+import se.nocroft.wearsnakecommon.model.SnakeGame;
+import se.nocroft.wearsnakecommon.model.SnekPiece;
 
 /**
  * Created by Pontus on 2018-01-05.

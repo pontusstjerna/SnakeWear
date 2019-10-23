@@ -96,8 +96,8 @@ public class MainActivity extends Activity {
         bigAd.setAdUnitId("ca-app-pub-2757743767659351/2179020563");
         bigAd.loadAd(new AdRequest.Builder().build());
 
-        adTop = findViewById(R.id.adViewTop);
-        adBottom = findViewById(R.id.adViewBottom);
+        //adTop = findViewById(R.id.adViewTop);
+        //adBottom = findViewById(R.id.adViewBottom);
         adBottom.loadAd(new AdRequest.Builder().build());
         adTop.loadAd(new AdRequest.Builder().build());
     }

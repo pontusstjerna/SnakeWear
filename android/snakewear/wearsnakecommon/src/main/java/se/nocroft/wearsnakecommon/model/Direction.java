@@ -1,4 +1,4 @@
-package pontus.wearsnake.model;
+package se.nocroft.wearsnakecommon.model;
 
 public class Direction {
     public enum Directions {LEFT, UP, RIGHT, DOWN}

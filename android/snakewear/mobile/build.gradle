@@ -10,6 +10,7 @@ android {
         targetSdkVersion 29
         versionCode 15
         versionName "2.2"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -24,6 +25,7 @@ android {
 }
 
 dependencies {
+    implementation project(':wearsnakecommon')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     wearApp project(':wear')
     testImplementation 'junit:junit:4.12'

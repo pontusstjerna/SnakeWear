@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-2757743767659351/3509318428" />
+        <!-- &lt;!&ndash;ads:adUnitId="ca-app-pub-3940256099942544/6300978111"> -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:src="@drawable/snake"
+        app:layout_constraintTop_toBottomOf="@id/adViewTop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+    <ImageView
+        android:id="@+id/decrease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/decrease"
+        app:layout_constraintTop_toTopOf="@id/btnPlay"
+        app:layout_constraintRight_toLeftOf="@id/btnPlay"
+        app:layout_constraintBottom_toBottomOf="@id/btnPlay" />
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/play_game"
+        android:textStyle="bold"
+        android:textSize="50sp"
+        android:fontFamily="@font/press_start_2p_regular"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <ImageView
+        android:id="@+id/increase"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/increase"
+        app:layout_constraintLeft_toRightOf="@id/btnPlay"
+        app:layout_constraintTop_toTopOf="@id/btnPlay"
+        app:layout_constraintBottom_toBottomOf="@id/btnPlay"
+        />
+    <LinearLayout
+        android:id="@+id/viewSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnPlay"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <TextView
+            android:id="@+id/txtSpeedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:fontFamily="@font/press_start_2p_regular"
+            android:textSize="15sp"
+            android:text="@string/level_select" />
+        <TextView
+            android:id="@+id/txtSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:fontFamily="@font/press_start_2p_regular"
+            android:layout_marginStart="5dp"
+            android:text="@string/init_level" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/viewHighscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/viewSpeed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <TextView
+            android:id="@+id/txtHighscoreLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:fontFamily="@font/press_start_2p_regular"
+            android:text="@string/highscore"
+            />
+        <TextView
+            android:id="@+id/txtHighscore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="None yet!"
+            android:textSize="15sp"
+            android:fontFamily="@font/press_start_2p_regular"
+            android:layout_marginStart="5dp"
+            />
+    </LinearLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-2757743767659351/4986051629"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+        <!--&lt;!&ndash;ads:adUnitId="ca-app-pub-3940256099942544/6300978111">&ndash;&gt; -->
+</androidx.constraintlayout.widget.ConstraintLayout>

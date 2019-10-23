@@ -1,31 +1,18 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/black">
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adViewTop"
-        android:layout_width="match_parent"
+    android:background="@color/dark_dark_gray">
+    <ImageView
+        android:id="@+id/snake_logo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-2757743767659351/3509318428">
-        <!--ads:adUnitId="ca-app-pub-3940256099942544/6300978111">-->
-    </com.google.android.gms.ads.AdView>
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adViewBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-2757743767659351/4986051629">
-        <!--ads:adUnitId="ca-app-pub-3940256099942544/6300978111">-->
-    </com.google.android.gms.ads.AdView>
+        android:src="@drawable/snake"
+         />
     <Button
         android:id="@+id/btnPlay"
         android:layout_width="110dp"
@@ -35,14 +22,6 @@
         android:text="@string/play_game"
         android:textSize="@dimen/font_size_btn"
         android:gravity="center" />
-    <ImageView
-        android:id="@+id/snake_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/snake"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/btnPlay"
-        android:layout_margin="30.0dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -101,4 +80,4 @@
         android:layout_below="@id/level"
         android:layout_centerHorizontal="true"
         android:text="@string/wear_text"/>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
