@@ -36,8 +36,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/play_game"
-            android:textSize="15sp"
-            android:fontFamily="@font/press_start_2p_regular"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:fontFamily="@font/lalezar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -66,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:fontFamily="@font/press_start_2p_regular"
+                android:fontFamily="@font/lalezar"
                 android:textSize="15sp"
                 android:text="@string/level_select" />
             <TextView
@@ -75,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:fontFamily="@font/press_start_2p_regular"
+                android:fontFamily="@font/lalezar"
                 android:layout_marginStart="5dp"
                 android:text="@string/init_level" />
         </LinearLayout>
@@ -94,7 +96,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="15sp"
-                android:fontFamily="@font/press_start_2p_regular"
+                android:fontFamily="@font/lalezar"
                 android:text="@string/highscore"
                 />
             <TextView
@@ -104,7 +106,7 @@
                 android:textColor="@color/white"
                 android:text="None yet!"
                 android:textSize="15sp"
-                android:fontFamily="@font/press_start_2p_regular"
+                android:fontFamily="@font/lalezar"
                 android:layout_marginStart="5dp"
                 />
         </LinearLayout>

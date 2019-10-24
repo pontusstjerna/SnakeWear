@@ -3,6 +3,7 @@ package pontus.wearsnake;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 
 import se.nocroft.wearsnakecommon.model.SnakeGame;
 import se.nocroft.wearsnakecommon.model.SnekPiece;
@@ -44,6 +45,10 @@ public class Renderer {
         paddingY = (height - scale * SnakeGame.SIZE) / 2;
 
         paint = new Paint();
+
+        /*Typeface plain = Typeface.createFromAsset(assetManager, pathToFont);
+        Typeface bold = Typeface.create(plain, Typeface.DEFAULT_BOLD)*/
+        Paint paint = new Paint();
     }
 
     public void render(Canvas canvas) {
@@ -131,6 +136,7 @@ public class Renderer {
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setStyle(Paint.Style.FILL);
         canvas.drawText("Highest: " + getHighscoreString(), width / 2, paddingY - scale / 2, paint);
+
         canvas.drawText("Current: " + getScoreString(), width / 2, paddingY + SnakeGame.SIZE * scale + scale * 2, paint);
     }
 
