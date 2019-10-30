@@ -35,7 +35,7 @@ public class Game extends View {
         this(context);
 
         game = new SnakeGame();
-        renderer = new Renderer(game, width, height, highscore);
+        renderer = new Renderer(game, width, height, highscore, context);
 
         setOnTouchListener((view, motionEvent) -> onTap(view, motionEvent, context));
 

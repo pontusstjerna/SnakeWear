@@ -30,6 +30,7 @@ dependencies {
     wearApp project(':wear')
     testImplementation 'junit:junit:4.12'
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
     implementation 'androidx.mediarouter:mediarouter:1.1.0'
     implementation 'com.google.android.gms:play-services:12.0.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

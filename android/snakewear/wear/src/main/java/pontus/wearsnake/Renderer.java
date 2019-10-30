@@ -1,10 +1,14 @@
 package pontus.wearsnake;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
+import androidx.core.content.res.ResourcesCompat;
 import se.nocroft.wearsnakecommon.model.SnakeGame;
 import se.nocroft.wearsnakecommon.model.SnekPiece;
 
@@ -33,7 +37,7 @@ public class Renderer {
     private int height;
     private int highscore;
 
-    public Renderer(SnakeGame game, int width, int height, int highscore) {
+    public Renderer(SnakeGame game, int width, int height, int highscore, Context context) {
         this.game = game;
         this.width = width;
         this.height = height;
@@ -46,9 +50,8 @@ public class Renderer {
 
         paint = new Paint();
 
-        /*Typeface plain = Typeface.createFromAsset(assetManager, pathToFont);
-        Typeface bold = Typeface.create(plain, Typeface.DEFAULT_BOLD)*/
         Paint paint = new Paint();
+        paint.setTypeface(ResourcesCompat.getFont(context, R.font.lalezar));
     }
 
     public void render(Canvas canvas) {
@@ -56,10 +59,7 @@ public class Renderer {
             canvas.drawRGB(0,0,0);
 
             paint.setColor(DARK_GRAY);
-            paint.setStyle(Paint.Style.FILL_AND_STROKE);
-            drawBackground(paint, canvas);
-            paint.setColor(DARK_ORANGE);
-            paint.setStyle(Paint.Style.STROKE);
+            paint.setStyle(Paint.Style.FILL);
             drawBackground(paint, canvas);
 
             drawHead(canvas);
@@ -75,6 +75,11 @@ public class Renderer {
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
             canvas.drawRect(foodX, foodY, foodX + scale, foodY + scale, paint); //food
             drawScore(canvas);
+
+            paint.setColor(DARK_ORANGE);
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setStrokeWidth(2);
+            drawBackground(paint, canvas);
         } else {
             showGameOver(canvas);
         }

@@ -1,8 +1,11 @@
 package pontus.wearsnake;
 
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 
 import pontus.wearsnake.model.SnakeGame;
 import pontus.wearsnake.model.SnekPiece;
@@ -30,7 +33,7 @@ public class Renderer {
     private int height;
     private int highscore;
 
-    public Renderer(SnakeGame game, int width, int height, int highscore) {
+    public Renderer(SnakeGame game, int width, int height, int highscore, Context context) {
         this.game = game;
         this.width = width;
         this.height = height;
@@ -41,7 +44,9 @@ public class Renderer {
         paddingX = (width - scale * SnakeGame.SIZE) / 2;
         paddingY = (height - scale * SnakeGame.SIZE) / 2;
 
-        paint = new Paint();
+        AssetManager am = context.getApplicationContext().getAssets();
+        Paint paint = new Paint();
+        paint.setTypeface(Typeface.createFromAsset(am, "font/lalezar.ttf"));
     }
 
     public void render(Canvas canvas) {

@@ -40,7 +40,7 @@ public class Game extends View {
 
         this.bigAd = bigAd;
         game = new SnakeGame();
-        renderer = new Renderer(game, width, height, highscore);
+        renderer = new Renderer(game, width, height, highscore, context);
 
         random = new Random();
 
