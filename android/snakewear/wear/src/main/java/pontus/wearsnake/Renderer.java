@@ -51,7 +51,7 @@ public class Renderer {
         paint = new Paint();
 
         Paint paint = new Paint();
-        paint.setTypeface(ResourcesCompat.getFont(context, R.font.lalezar));
+        paint.setTypeface(Typeface.create(ResourcesCompat.getFont(context, R.font.lalezar), Typeface.BOLD));
     }
 
     public void render(Canvas canvas) {
@@ -123,14 +123,14 @@ public class Renderer {
         if (game.getScore() > highscore) gameover = "New high score!";
 
         paint.setColor(DARK_ORANGE);
-        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        paint.setStyle(Paint.Style.FILL);
 
         canvas.drawColor(DARK_GRAY);
         paint.setTextSize(3 * scale);
         canvas.drawText(gameover, width / 2, height / 2 - scale * 2, paint);
         paint.setTextSize(2 * scale);
         canvas.drawText("Your score: " + getScoreString(), width / 2, height / 2 + scale * 2, paint);
-        paint.setTextSize(scale);
+        paint.setTextSize(1 * scale);
         paint.setColor(WHITE);
         canvas.drawText("Tap to continue...", width / 2, height / 2 + scale * 8, paint);
     }
@@ -140,9 +140,9 @@ public class Renderer {
         paint.setTextSize(scale * 2);
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setStyle(Paint.Style.FILL);
-        canvas.drawText("Highest: " + getHighscoreString(), width / 2, paddingY - scale / 2, paint);
+        canvas.drawText("Highest: " + getHighscoreString(), width / 2, paddingY - scale / 2 - 5, paint);
 
-        canvas.drawText("Current: " + getScoreString(), width / 2, paddingY + SnakeGame.SIZE * scale + scale * 2, paint);
+        canvas.drawText("Current: " + getScoreString(), width / 2, paddingY + SnakeGame.SIZE * scale + scale * 2 + 5, paint);
     }
 
     private String getScoreString() {
