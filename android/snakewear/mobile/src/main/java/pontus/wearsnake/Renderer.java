@@ -1,11 +1,9 @@
 package pontus.wearsnake;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 
 import androidx.core.content.res.ResourcesCompat;
 import pontus.wearsnake.model.SnakeGame;
@@ -20,7 +18,7 @@ public class Renderer {
     private final int GRAY = Color.parseColor("#646464");
     private final int DARK_GRAY = Color.parseColor("#101010");
     private final int CYAN = Color.parseColor("#00ffff");
-    private final int WHEAT = Color.parseColor("#f5deb3");
+    private final int WHITE = Color.parseColor("#ffffff");
 
     private SnakeGame game;
 
@@ -46,7 +44,7 @@ public class Renderer {
         paddingY = (height - scale * SnakeGame.SIZE) / 2;
 
         paint = new Paint();
-        paint.setTypeface(Typeface.create(ResourcesCompat.getFont(context, R.font.lalezar), Typeface.BOLD));
+        paint.setTypeface(ResourcesCompat.getFont(context, R.font.lalezar));
     }
 
     public void render(Canvas canvas) {
@@ -124,12 +122,12 @@ public class Renderer {
         paint.setTextSize(2 * scale);
         canvas.drawText("Your score: " + getScoreString(), width / 2, height / 2 + scale * 2, paint);
         paint.setTextSize(scale);
-        paint.setColor(WHEAT);
+        paint.setColor(WHITE);
         canvas.drawText("Tap to continue...", width / 2, height / 2 + scale * 8, paint);
     }
 
     private void drawScore(Canvas canvas) {
-        paint.setColor(WHEAT);
+        paint.setColor(WHITE);
         paint.setTextSize(scale * 2);
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setStyle(Paint.Style.FILL);
