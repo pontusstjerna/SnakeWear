@@ -49,9 +49,7 @@ public class Renderer {
         paddingY = (height - scale * SnakeGame.SIZE) / 2;
 
         paint = new Paint();
-
-        Paint paint = new Paint();
-        paint.setTypeface(Typeface.create(ResourcesCompat.getFont(context, R.font.lalezar), Typeface.BOLD));
+        paint.setTypeface(ResourcesCompat.getFont(context, R.font.lalezar));
     }
 
     public void render(Canvas canvas) {
@@ -130,7 +128,7 @@ public class Renderer {
         canvas.drawText(gameover, width / 2, height / 2 - scale * 2, paint);
         paint.setTextSize(2 * scale);
         canvas.drawText("Your score: " + getScoreString(), width / 2, height / 2 + scale * 2, paint);
-        paint.setTextSize(1 * scale);
+        paint.setTextSize(2 * scale);
         paint.setColor(WHITE);
         canvas.drawText("Tap to continue...", width / 2, height / 2 + scale * 8, paint);
     }

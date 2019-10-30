@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
+import androidx.core.content.res.ResourcesCompat;
 import pontus.wearsnake.model.SnakeGame;
 import pontus.wearsnake.model.SnekPiece;
 
@@ -44,9 +45,8 @@ public class Renderer {
         paddingX = (width - scale * SnakeGame.SIZE) / 2;
         paddingY = (height - scale * SnakeGame.SIZE) / 2;
 
-        AssetManager am = context.getApplicationContext().getAssets();
-        Paint paint = new Paint();
-        paint.setTypeface(Typeface.createFromAsset(am, "font/lalezar.ttf"));
+        paint = new Paint();
+        paint.setTypeface(Typeface.create(ResourcesCompat.getFont(context, R.font.lalezar), Typeface.BOLD));
     }
 
     public void render(Canvas canvas) {

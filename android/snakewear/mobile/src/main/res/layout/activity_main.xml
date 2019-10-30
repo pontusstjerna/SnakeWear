@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/dark_dark_gray">
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewTop"
         android:layout_width="match_parent"
@@ -26,41 +27,24 @@
         android:paddingRight="50dp"
         android:src="@drawable/snake"
         app:layout_constraintTop_toBottomOf="@id/adViewTop"
+        app:layout_constraintBottom_toTopOf="@id/btnPlay"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
-    <ImageView
-        android:id="@+id/decrease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/decrease"
-        app:layout_constraintTop_toTopOf="@id/viewSpeed"
-        app:layout_constraintRight_toLeftOf="@id/viewSpeed"
-        app:layout_constraintBottom_toBottomOf="@id/viewSpeed" />
+
     <Button
         android:id="@+id/btnPlay"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/play_game"
-        android:textStyle="bold"
-        android:textSize="50sp"
+        android:layout_height="94dp"
         android:fontFamily="@font/lalezar"
         android:gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="0dp"
+        android:text="@string/play_game"
+        android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        />
-    <ImageView
-        android:id="@+id/increase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/increase"
-        app:layout_constraintLeft_toRightOf="@id/viewSpeed"
-        app:layout_constraintTop_toTopOf="@id/viewSpeed"
-        app:layout_constraintBottom_toBottomOf="@id/viewSpeed"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
     <LinearLayout
         android:id="@+id/viewHighscore"
         android:layout_width="wrap_content"
@@ -76,8 +60,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="15sp"
-            android:fontFamily="@font/press_start_2p_regular"
+            android:textSize="24sp"
+            android:fontFamily="@font/lalezar"
             android:text="@string/highscore"
             />
         <TextView
@@ -86,8 +70,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="None yet!"
-            android:textSize="15sp"
-            android:fontFamily="@font/press_start_2p_regular"
+            android:textSize="24sp"
+            android:fontFamily="@font/lalezar"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp" />
     </LinearLayout>
@@ -95,34 +79,61 @@
         android:id="@+id/txtSpeedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/white"
         android:textStyle="bold"
-        android:fontFamily="@font/press_start_2p_regular"
-        android:textSize="15sp"
+        android:fontFamily="@font/lalezar"
+        android:textSize="24sp"
         android:text="@string/level_select"
         app:layout_constraintTop_toBottomOf="@id/viewHighscore"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
-    <LinearLayout
-        android:id="@+id/viewSpeed"
+    <TextView
+        android:id="@+id/txtSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/viewHighscore"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:fontFamily="@font/lalezar"
+        android:text="@string/init_level"
+        app:layout_constraintTop_toBottomOf="@id/txtSpeedLabel"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-        <TextView
-            android:id="@+id/txtSpeed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:fontFamily="@font/press_start_2p_regular"
-            android:layout_marginStart="5dp"
-            android:text="@string/init_level" />
-    </LinearLayout>
+        app:layout_constraintRight_toRightOf="parent"/>
+    <ImageView
+        android:id="@+id/increase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/increase"
+        app:layout_constraintLeft_toRightOf="@id/txtSpeed"
+        app:layout_constraintTop_toTopOf="@id/txtSpeed"
+        app:layout_constraintBottom_toBottomOf="@id/txtSpeed"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp" />
+    <ImageView
+        android:id="@+id/decrease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/decrease"
+        app:layout_constraintTop_toTopOf="@id/txtSpeed"
+        app:layout_constraintRight_toLeftOf="@id/txtSpeed"
+        app:layout_constraintBottom_toBottomOf="@id/txtSpeed"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/font_size"
+        android:layout_marginTop="20dp"
+        android:id="@+id/txtPlayWear"
+        android:text="@string/wear_text"
+        app:layout_constraintTop_toBottomOf="@id/txtSpeed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewBottom"
         android:layout_width="match_parent"

@@ -5,5 +5,5 @@
 <string name="play_game">PLAY</string>
 <string name="level_select">Speed: </string>
 <string name="init_level">5</string>
-<string name="wear_text">Play it on Android Wear!</string>
+<string name="wear_text">Play it on Wear OS!</string>
 </resources>

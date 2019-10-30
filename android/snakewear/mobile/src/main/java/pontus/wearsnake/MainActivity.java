@@ -96,8 +96,8 @@ public class MainActivity extends Activity {
         bigAd.setAdUnitId("ca-app-pub-2757743767659351/2179020563");
         bigAd.loadAd(new AdRequest.Builder().build());
 
-        //adTop = findViewById(R.id.adViewTop);
-        //adBottom = findViewById(R.id.adViewBottom);
+        adTop = findViewById(R.id.adViewTop);
+        adBottom = findViewById(R.id.adViewBottom);
         adBottom.loadAd(new AdRequest.Builder().build());
         adTop.loadAd(new AdRequest.Builder().build());
     }
@@ -108,18 +108,17 @@ public class MainActivity extends Activity {
     }
 
     private void initComponents() {
-        txtHighscore = findViewById(R.id.highscore);
-        txtSpeed = findViewById(R.id.level);
+        txtHighscore = findViewById(R.id.txtHighscore);
+        txtSpeed = findViewById(R.id.txtSpeed);
         btnPlay = findViewById(R.id.btnPlay);
         imgDecrease = findViewById(R.id.decrease);
         imgIncrease = findViewById(R.id.increase);
     }
 
-    @SuppressLint("SetTextI18n")
     private void updateHighscore() {
         SharedPreferences prefs = getPreferences(MODE_PRIVATE);
         highscore = prefs.getInt("highscore", MODE_PRIVATE);
-        txtHighscore.setText("High score: " + highscore);
+        txtHighscore.setText(String.valueOf(highscore));
     }
 
     private void updateSpeed(TextView txtSpeed) {
