@@ -54,9 +54,6 @@ public class Renderer {
             paint.setColor(DARK_GRAY);
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
             drawBackground(paint, canvas);
-            paint.setColor(DARK_ORANGE);
-            paint.setStyle(Paint.Style.STROKE);
-            drawBackground(paint, canvas);
 
             drawHead(canvas);
             paint.setColor(GRAY);
@@ -70,6 +67,11 @@ public class Renderer {
             paint.setColor(CYAN);
             paint.setStyle(Paint.Style.FILL_AND_STROKE);
             canvas.drawRect(foodX, foodY, foodX + scale, foodY + scale, paint); //food
+
+            paint.setColor(DARK_ORANGE);
+            paint.setStyle(Paint.Style.STROKE);
+            drawBackground(paint, canvas);
+
             drawScore(canvas);
         } else {
             showGameOver(canvas);
